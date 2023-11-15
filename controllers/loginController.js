@@ -10,7 +10,7 @@ controller.login = (req, res) => {
 controller.validate = async function (req, res) {
   const user = req.body.user;
   const password = req.body.password;
-  const query = `SELECT password FROM users WHERE user = "${user}"`;
+  const query = `SELECT password,rol,user,name FROM users WHERE user = "${user}"`;
 
   try {
     const results = await new Promise((resolve, reject) => {
@@ -23,9 +23,12 @@ controller.validate = async function (req, res) {
       });
     });
     const hashed = results[0].password;
+    const rol = results[0].rol;
+    const name = results[0].name;
+    const user = results[0].user;
     const isValid = await bcrypt.compare(password, hashed);
     if (isValid) {
-      res.send("La contrasena si es");
+      
     } else {
       res.send("que es eso");
     }
