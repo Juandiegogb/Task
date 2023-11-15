@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Informes</title>
+    <link rel="stylesheet" href="informes.css" />
+  </head>
+  <body>
+
+    <h1>PROYECCION FACTURACION</h1>
+    <div class="table-container">
+      <table class="informe-table">
+        <thead>
+          <tr>
+            <th>ODT</th>
+            <th>Cliente</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% datos.forEach(function(dato) { %>
+            <tr>
+              <td><%= dato.odt %></td>
+              <td><%= dato.cliente %></td>
+              <td class="informecolor"><%= dato.precio %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
+

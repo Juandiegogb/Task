@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    font-size: 15px;
+}
+
+h1 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: space-between;
+}
+
+li:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+li:hover {
+    background-color: #e0e0e0;
+}
+
+li span {
+    flex: 1;
+    padding: 8px;
+    text-align: left;
+}
