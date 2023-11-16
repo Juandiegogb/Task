@@ -1,1 +1,28 @@
-<h1>Hola este es tu rol <%= rol %></h1>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Tu encabezado aquí -->
+  </head>
+  <body>
+    <!-- Otros elementos de la página -->
+
+    <% if (data && data.rol === 'admin') { %>
+    <h1>Hola Admin: <%=data.name%></h1>
+    <button>Acción para Admin</button>
+    <% } else if (data && data.rol === 'tecnico') { %>
+    <h1>Hola tecnico: <%=data.name%></h1>
+    <button>Acción para data</button>
+    <% } else if (data && data.rol === 'Ingenieria') { %>
+    <h1>Hola ingeniero: <%=data.name%></h1>
+    <button>Acción para data</button>
+    <% } else if (data && data.rol === 'financiero') { %>
+    <h1>Hola <%=data.name%></h1>
+    <button>Acción para data</button>
+    <a href="/facturar">este es un boton</a>
+    <% } else { %>
+    <!-- Mostrar otros elementos o manejar otros casos si es necesario -->
+    <% } %>
+
+    <!-- Otros elementos de la página -->
+  </body>
+</html>

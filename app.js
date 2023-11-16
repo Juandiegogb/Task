@@ -1,25 +1,22 @@
 const express = require("express");
 const app = express();
 const port = 2000; // Puedes cambiar el puerto según tus necesidades
-const informesRoutes = require("./routes/informesRoutes");
-const plantaRoutes = require("./routes/plantaRoutes");
-const facturarRoutes = require("./routes/facturarRoutes");
-const loginRoutes = require("./routes/loginRoutes");
+const routes = require("./routes/router");
+const cookieParser = require("cookie-parser");
+const dotenv = require("dotenv");
+const morgan = require("morgan")
 
 
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+app.use(morgan('dev'))
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use("/", routes);
+app.use(cookieParser());
+
+dotenv.config({ path: "./env/.env" });
 
 app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+  console.log(`Servidor escuchando en http://hytwebservices.local`);
 });
-
-app.use("/", informesRoutes);
-app.use("/", plantaRoutes);
-app.use("/", plantaRoutes);
-app.use("/", facturarRoutes);
-app.use("/", loginRoutes);
