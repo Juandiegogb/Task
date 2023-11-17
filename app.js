@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 2000; // Puedes cambiar el puerto según tus necesidades
+const port = 8800; // Puedes cambiar el puerto según tus necesidades
 const routes = require("./routes/router");
 const cookieParser = require("cookie-parser");
 const dotenv = require("dotenv");
@@ -18,5 +18,5 @@ app.use(cookieParser());
 dotenv.config({ path: "./env/.env" });
 
 app.listen(port, () => {
-  console.log(`Servidor escuchando en http://hytwebservices.local`);
+  console.log(`Servidor escuchando en http://localhost:${port}`);
 });

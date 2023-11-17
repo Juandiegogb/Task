@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 controller.login = (req, res) => {
-  res.render("tools/login");
+  res.render("login");
 };
 
 controller.validate = async function (req, res) {
