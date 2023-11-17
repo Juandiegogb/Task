@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: monospace;
   overflow: hidden; /* Evitar el desplazamiento en la página completa */
 }
 

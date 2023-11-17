@@ -14,3 +14,8 @@ controller.home = async function (req, res) {
 };
 
 module.exports = controller;
+
+controller.logout = (req,res) =>{
+  res.clearCookie('jwt')
+  res.redirect('/')
+}

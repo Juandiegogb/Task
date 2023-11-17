@@ -9,6 +9,8 @@ router.use(cookieParser())
 router.get("/", loginController.login);
 router.post("/", loginController.validate);
 router.get("/home",homeController.home)
+router.get("/logout",homeController.logout)
+
 
 
 module.exports = router;
@@ -19,7 +21,7 @@ router.get('/data', (req, res)=>{
             throw error;
         } else {                                                   
             data = JSON.stringify(results);
-            res.send(data);          
+            res.send(info);          
         }   
     })
 })
