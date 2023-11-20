@@ -10,7 +10,7 @@ controller.login = (req, res) => {
 controller.validate = async function (req, res) {
   const user = req.body.user;
   const password = req.body.password;
-  const query = `SELECT password,rol,user,name FROM users WHERE user = "${user}"`;
+  const query = `SELECT id,password,rol,user,name FROM users WHERE user = "${user}"`;
 
   try {
     const results = await new Promise((resolve, reject) => {
@@ -30,6 +30,7 @@ controller.validate = async function (req, res) {
       const rol = results[0].rol;
       const name = results[0].name;
       const user = results[0].user;
+      const id = results[0].id;
       const isValid = await bcrypt.compare(password, hashed);
       if (isValid) {
         const token = jwt.sign(
@@ -37,6 +38,7 @@ controller.validate = async function (req, res) {
             name: name,
             rol: rol,
             user: user,
+            id:id
           },
           process.env.JWT_SECRETO,
           {

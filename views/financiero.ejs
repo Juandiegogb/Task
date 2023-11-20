@@ -29,15 +29,14 @@
     <!-- Navbar -->
     <nav class="navbar">
       <div class="navbar-brand">Mi App</div>
+      <div><h1>Hola <%= data.rol%> <%=data.name%></h1></div>
       <div><a type="button" href="/logout">Log Out</a></div>
     </nav>
 
     <!-- Sidebar -->
     <aside class="sidebar">
       <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Configuración</a></li>
-        <li><a href="#">Reportes</a></li>
+        <li><a href="/proyeccion">Proyeccion</a></li>
       </ul>
     </aside>
 
@@ -53,14 +52,29 @@
         >
           <thead>
             <tr class="text-white" style="background-color: #6200ee">
-              <th scope="col">ID</th>
-              <th scope="col">USUARIO</th>
-              <th scope="col">ROL</th>
-              <th scope="col">ACCIONES</th>
+              <th scope="col">ODT</th>
+              <th scope="col">CLIENTE</th>
+              <th scope="col">CLASIFICACION</th>
+              <th scope="col">FACTURA</th>
+              <th scope="col">ESTADO CLIENTE</th>
+              <th scope="col">PRECIO</th>
             </tr>
           </thead>
-          <!-- <tbody>       
-    </tbody> -->
+          <tbody>
+            <% if (results && results.length) { %> <%
+            results.forEach(function(facturar) { %>
+            <tr>
+              <td><%= facturar.odt %></td>
+              <td><%= facturar.cliente %></td>
+              <td><%= facturar.descripcion %></td>
+              <td><%= facturar.acciones %></td>
+            </tr>
+            <% }); %> <% } else { %>
+            <tr>
+              <td colspan="4">No hay datos disponibles.</td>
+            </tr>
+            <% } %>
+          </tbody>
         </table>
       </div>
 
@@ -85,54 +99,6 @@
         src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap5.min.js"
       ></script>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-
-      <script>
-        //const datos = <%- JSON.stringify(data) %>;
-        //console.log(datos);
-        $("#info").DataTable({
-          ajax: {
-            url: "/data",
-            dataSrc: "",
-          },
-          columns: [
-            { data: "odt" },
-            { data: "cliente" },
-            { data: "descripcion" },
-            {
-              data: null,
-              render: function (data) {
-                return (
-                  '<a href="/edit/' +
-                  data.id +
-                  '"class="btn btn-info"><i class="fas fa-edit"></i></a><a onclick="confirmar(' +
-                  data.id +
-                  ')" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>'
-                );
-              },
-            },
-          ],
-          pageLength: 5,
-          lengthMenu: [
-            [5, 10, 20, -1],
-            [5, 10, 20, "Todos"],
-          ],
-        });
-
-        function confirmar(id) {
-          Swal.fire({
-            title: "¿Confirma eliminar el registro: " + id + "?",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#d33",
-            cancelButtonColor: "#6c757d",
-            confirmButtonText: "Confirmar",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              window.location = "/delete/" + id;
-            }
-          });
-        }
-      </script>
     </main>
   </body>
 </html>
